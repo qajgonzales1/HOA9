@@ -1,0 +1,7 @@
+---
+- name: Install Prometheus
+  hosts: servers
+  become: true
+  roles:
+    - common
+    - prometheus

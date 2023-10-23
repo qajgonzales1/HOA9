@@ -1,0 +1,20 @@
+---
+- name: Update package cache for Ubuntu
+  package:
+    name: '*'
+    state: latest
+    force_apt_get: yes
+  when: ansible_distribution == "Ubuntu"
+
+- name: Update package cache for CentOS
+  yum: 
+    name: '*'
+    state: latest
+  when: ansible_distribution == "CentOS"
+
+- name: Install common dependencies
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - unzip
